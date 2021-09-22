@@ -87,11 +87,15 @@ const EntryForm = (props) => {
   }
 
   const SubmitForm = () => {
+
+    let totalTime = 0; 
+    totalTime = parseInt(document.getElementById('hours').value) * 60 + parseInt(document.getElementById('minutes').value); 
+
     // Send new entry to database
     let data = {
       songName: document.getElementById('song-name-input').value,
       instrument: document.getElementById('instrument-select').value,
-      length: 60, 
+      length: totalTime, 
       date: Date.now()
     }
 
@@ -116,10 +120,10 @@ const EntryForm = (props) => {
 
         <Form.Group>
           <Form.Label>Practice Length</Form.Label>
-          <Form.Control type="number" />
+          <Form.Control type="number" id="hours"/>
           <Form.Text>Hours</Form.Text>
 
-          <Form.Control type="number" />
+          <Form.Control type="number" id="minutes"/>
           <Form.Text>Minutes</Form.Text>
         </Form.Group>
 
